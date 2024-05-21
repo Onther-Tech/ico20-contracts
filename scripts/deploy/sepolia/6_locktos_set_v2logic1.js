@@ -12,7 +12,7 @@ const ProxyABI = require("../../../artifacts/contracts/stake/LockTOSv2Proxy.sol/
 
 const info = {
   lockTosProxy: '0x8Fb966Bfb690a8304a5CdE54d9Ed6F7645b26576',
-  lockTosV2Logic: '0x1667934506bDeF259014Ea75a7Fa425AEaC56AcB',
+  lockTosV2Logic: '0x999Af9d1ba6B26058F6c58CaF135943d78433149',
   maxTime : ethers.BigNumber.from('94348800'),
   staker: '',
 }
@@ -32,13 +32,20 @@ async function deployMain() {
   logic0 = await proxy.implementation2(index)
   console.log('logic1', logic0)
 
-  // 0xab2f5917
+  // selector1 0xab2f5917
+  // selector2 0x8ea0b211
   const selector1 = encodeFunctionSignature("globalCheckpoint(uint256)");
-  console.log('selector1', selector1)
+  const selector2 = encodeFunctionSignature("needCheckpointCount()");
 
-  // await (await proxy.setSelectorImplementations2([selector1], logic0)).wait()
-  const funcImp  = await proxy.selectorImplementation(selector1)
-  console.log('funcImp', funcImp)
+  console.log('selector1', selector1)
+  console.log('selector2', selector2)
+
+  await (await proxy.setSelectorImplementations2([selector1, selector2], logic0)).wait()
+  const funcImp1  = await proxy.selectorImplementation(selector1)
+  const funcImp2  = await proxy.selectorImplementation(selector2)
+
+  console.log('globalCheckpoint funcImp', funcImp1)
+  console.log('needCheckpointCount funcImp', funcImp2)
 
   return null;
 }
