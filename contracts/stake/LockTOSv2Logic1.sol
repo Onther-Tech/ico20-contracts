@@ -40,11 +40,10 @@ contract LockTOSv2Logic1 is
         free = 1;
     }
 
-     function needCheckpointCount() external view returns (uint256 needCount) {
+    function needCheckpointCount() external view returns (uint256 needCount) {
         uint256 len = pointHistory.length;
         if (len != 0) {
-            uint256 startUnitTime =  (block.timestamp - pointHistory[len - 1].timestamp).div(epochUnit).mul(epochUnit);
-            needCount = (block.timestamp - startUnitTime) / epochUnit;
+            needCount = (block.timestamp - pointHistory[pointHistory.length - 1].timestamp.div(epochUnit).mul(epochUnit)) / epochUnit;
         }
     }
 

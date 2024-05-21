@@ -9,11 +9,16 @@ const hre = require("hardhat");
 const { ethers } = require("hardhat");
 const { Signer, Contract, ContractFactory } = require("ethers")
 const LockTOSAbi = require("../../abis/LockTOSv2Logic.json")
-const LockTOSProxyAbi = require("../../abis/LockTOSProxy.json")
+const LockTOSProxyAbi = require("../../abis/LockTOSv2Proxy.json")
 const TOSAbi = require("../../abis/TOS.json")
+const LockTOSv2Logic1Abi = require("../../abis/LockTOSv2Logic1.json")
+
+const {encodeFunctionSignature}  = require("web3-eth-abi")
+
+const ProxyABI = require("../../artifacts/contracts/stake/LockTOSv2Proxy.sol/LockTOSv2Proxy.json").abi
 
 let accounts, admin1,  user1, user2, user3, user4, provider;
-let lockTOSLogic, lockTOSProxy, lockTOS, tosContract
+let lockTOSLogic, lockTOSProxy, lockTOS, tosContract, lockTOSLogicV1
 let epochUnit,  maxTime;
 
 
@@ -26,6 +31,16 @@ let lockTosProxyAddress = "0x8Fb966Bfb690a8304a5CdE54d9Ed6F7645b26576"
 let tosAdmin
 let startTime
 
+async function deployContract(
+  abi,
+  bytecode,
+  deployParams,
+  actor )
+{
+  const factory = new ContractFactory(abi, bytecode, actor);
+  return await factory.deploy(...deployParams);
+}
+
 function decimalToHexString(number)
 {
     if (number < 0)  number = 0xFFFFFFFF + number + 1;
@@ -33,10 +48,15 @@ function decimalToHexString(number)
 }
 
 async function passTime (periodTime) {
-  // let block = await ethers.provider.getBlock('latest')
+  let block = await ethers.provider.getBlock('latest')
+  let startTime = block.timestamp
   // let periodTime = 60*60*24
   let blockLen = periodTime / 12
   let hexLen = "0x"+decimalToHexString(blockLen);
+
+  let epochUnit = await lockTOS.epochUnit()
+  epochUnit = epochUnit.toNumber()
+  // console.log('epochUnit', epochUnit)
 
   await ethers.provider.send("evm_increaseTime", [periodTime])
   await hre.network.provider.send("hardhat_mine", [hexLen]);
@@ -86,10 +106,37 @@ describe("LockTOS Test", function () {
 
     });
 
-    it("tosContract ", async () => {
-      tosContract = await ethers.getContractAt(TOSAbi.abi, tosAddress, admin1);
-      console.log('tosContract', tosContract.address)
-    });
+  //   it("add functions ", async () => {
+  //     lockTOSLogicV1 = await deployContract(LockTOSv2Logic1Abi.abi, LockTOSv2Logic1Abi.bytecode, [], admin1);
+  //     console.log('lockTOSLogicV1', lockTOSLogicV1.address)
+
+  //     const index = 1
+  //     await (await lockTOSProxy.connect(admin1).setImplementation2(lockTOSLogicV1.address, index, true)).wait()
+
+  //     const logic0 = await lockTOSProxy.implementation2(index)
+  //     console.log('logic1', logic0)
+
+  //     // selector1 0xab2f5917
+  //     // selector2 0x8ea0b211
+  //     const selector1 = encodeFunctionSignature("globalCheckpoint(uint256)");
+  //     const selector2 = encodeFunctionSignature("needCheckpointCount()");
+
+  //     console.log('selector1', selector1)
+  //     console.log('selector2', selector2)
+
+  //     await (await lockTOSProxy.connect(admin1).setSelectorImplementations2([selector1, selector2], lockTOSLogicV1.address)).wait()
+  //     const funcImp1  = await lockTOSProxy.selectorImplementation(selector1)
+  //     const funcImp2  = await lockTOSProxy.selectorImplementation(selector2)
+
+  //     console.log('globalCheckpoint funcImp', funcImp1)
+  //     console.log('needCheckpointCount funcImp', funcImp2)
+
+  //  });
+
+    // it("tosContract ", async () => {
+    //   tosContract = await ethers.getContractAt(TOSAbi.abi, tosAddress, admin1);
+    //   console.log('tosContract', tosContract.address)
+    // });
 
   })
 
@@ -126,9 +173,16 @@ describe("LockTOS Test", function () {
       const needCheckpointAfter = await lockTOS.needCheckpoint()
       console.log('needCheckpoint After :', needCheckpointAfter)
 
+      const needCheckpointCountAfter  = await lockTOS.connect(admin1)["needCheckpointCount()"]()
+      console.log('needCheckpointCount After:', needCheckpointCountAfter)
+
+
     });
 
     it("globalCheckpoint(uint256) : 10 weeks ", async () => {
+      const needCheckpointCount = await lockTOS.connect(admin1)["needCheckpointCount()"]()
+      console.log('needCheckpointCount :', needCheckpointCount)
+
       const needCheckpointPrev = await lockTOS.needCheckpoint()
       console.log('needCheckpoint Prev :', needCheckpointPrev)
 
@@ -136,6 +190,9 @@ describe("LockTOS Test", function () {
 
       const needCheckpointAfter = await lockTOS.needCheckpoint()
       console.log('needCheckpoint After :', needCheckpointAfter)
+
+      const needCheckpointCountAfter  = await lockTOS.connect(admin1)["needCheckpointCount()"]()
+      console.log('needCheckpointCount After:', needCheckpointCountAfter)
 
     });
 
@@ -157,10 +214,8 @@ describe("LockTOS Test", function () {
       const needCheckpointAfter = await lockTOS.needCheckpoint()
       console.log('needCheckpoint After :', needCheckpointAfter)
 
-
       const needCheckpointCountAfter = await lockTOS.connect(admin1)["needCheckpointCount()"]()
       console.log('needCheckpointCount After :', needCheckpointCountAfter)
-
 
     });
 

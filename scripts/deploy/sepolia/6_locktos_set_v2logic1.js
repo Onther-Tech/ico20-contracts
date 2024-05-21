@@ -12,7 +12,7 @@ const ProxyABI = require("../../../artifacts/contracts/stake/LockTOSv2Proxy.sol/
 
 const info = {
   lockTosProxy: '0x8Fb966Bfb690a8304a5CdE54d9Ed6F7645b26576',
-  lockTosV2Logic: '0x999Af9d1ba6B26058F6c58CaF135943d78433149',
+  lockTosV2Logic: '0x4E8CAF927a3cBa9B19461dE81CE6932064fa2e6e',
   maxTime : ethers.BigNumber.from('94348800'),
   staker: '',
 }
