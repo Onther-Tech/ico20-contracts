@@ -4,6 +4,8 @@ const utils = ethers.utils;
 
 const { toBN, keccak256 } = require("web3-utils");
 
+const {encodeFunctionSignature}  = require("web3-eth-abi")
+
 require("dotenv").config();
 
 const ProxyABI = require("../../../artifacts/contracts/stake/LockTOSv2Proxy.sol/LockTOSv2Proxy.json").abi
@@ -24,13 +26,19 @@ async function deployMain() {
     deployer
   );
 
-  await (await proxy.setImplementation2(info.lockTosV2Logic, 0, true)).wait()
+  const index = 1
+  await (await proxy.setImplementation2(info.lockTosV2Logic, index, true)).wait()
 
-  // let logic0 = await proxy.implementation()
-  // console.log('logic0', logic0)
+  logic0 = await proxy.implementation2(index)
+  console.log('logic1', logic0)
 
-  logic0 = await proxy.implementation2(0)
-  console.log('logic0', logic0)
+  // 0xab2f5917
+  const selector1 = encodeFunctionSignature("globalCheckpoint(uint256)");
+  console.log('selector1', selector1)
+
+  // await (await proxy.setSelectorImplementations2([selector1], logic0)).wait()
+  const funcImp  = await proxy.selectorImplementation(selector1)
+  console.log('funcImp', funcImp)
 
   return null;
 }
