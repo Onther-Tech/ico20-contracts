@@ -47,9 +47,13 @@ module.exports = {
       accounts: {
         count: 5,
       },
+      // forking: {
+      //   url: `https://mainnet.infura.io/v3/${process.env.InfuraKey}`,
+      //   blockNumber: 15125232,
+      // },
       forking: {
-        url: `https://mainnet.infura.io/v3/${process.env.InfuraKey}`,
-        blockNumber: 15125232,
+        url: `https://sepolia.infura.io/v3/${process.env.InfuraKey}`,
+        // blockNumber: 15125232,
       },
     },
     local: {
@@ -99,6 +103,16 @@ module.exports = {
         `${process.env.ACCOUNT2_PK}`,
       ],
     },
+    holesky: {
+      url: `https://ethereum-holesky.publicnode.com`,
+      accounts: [`${process.env.PRIVATE_KEY}`],
+      chainId: 17000
+    },
+    sepolia: {
+      url: `https://sepolia.infura.io/v3/${process.env.InfuraKey}`,
+      accounts: [`${process.env.PRIVATE_KEY}`],
+      chainId: 11155111,
+    },
     "tokamakGoerli" : {
       url: `https://goerli.optimism.tokamak.network`,
       accounts: [`${process.env.PRIVATE_KEY}`]
@@ -111,18 +125,15 @@ module.exports = {
   //     mainnet: `${process.env.APIKey}`
   //   }
   // },
+  // etherscan: {
+  //   apiKey: {
+  //     goerli: "YW8HPY4UI4GZAG7CCPNYTSNJ7CPQHGWPCB",
+  //   },
+  // },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
-    customChains: [
-      {
-        network: "tokamakGoerli",
-        chainId: 5050,
-        urls: {
-          apiURL: "https://goerli.explorer.tokamak.network/api",
-          browserURL: "https://goerli.explorer.tokamak.network"
-        }
-      }
-    ]
+    apiKey: {
+      goerli: "YW8HPY4UI4GZAG7CCPNYTSNJ7CPQHGWPCB",
+    },
   },
   solidity: {
     version: "0.7.6",
