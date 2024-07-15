@@ -7,6 +7,7 @@ const {
 } = require("web3-utils");
 
 let TOSToken = require('../../abis/TOS.json');
+let TONToken = require('../../abis/TOS.json');
 
 let UniswapV3Factory = require('../../abis/UniswapV3Factory.json');
 let UniswapV3Pool = require('../../abis/UniswapV3Pool.json');
@@ -84,6 +85,8 @@ describe("TokamakStakeUpgrade4", function () {
     let provider;
     let tester, logic, admin
     let func_withdraw
+    let tonContract
+
     before(async function () {
         accounts = await ethers.getSigners();
         [admin1, admin2] = accounts;
@@ -118,7 +121,7 @@ describe("TokamakStakeUpgrade4", function () {
 
         func_withdraw = Web3EthAbi.encodeFunctionSignature("withdraw()") ;
         console.log("func_withdraw",func_withdraw);
-
+        tonContract = await ethers.getContractAt(TONToken.abi, contractInfos.TON);
     });
 
     it("StakeTONUpgrade3", async function () {
@@ -205,7 +208,10 @@ describe("TokamakStakeUpgrade4", function () {
     it("Check StakeTON2", async function () {
         let userStaked1  = await stakeTON2.userStaked(testerAddress)
         console.log('userStaked1', userStaked1)
-
+        let tonBalanceTesterPrev = await tonContract.balanceOf(testerAddress)
+        let tonBalanceContractPrev = await tonContract.balanceOf(stakeTON2.address)
+        console.log('tonBalanceTesterPrev', tonBalanceTesterPrev)
+        console.log('tonBalanceContractPrev', tonBalanceContractPrev)
         let finalBalanceTON  = await stakeTON2.finalBalanceTON()
         console.log('finalBalanceTON', finalBalanceTON)
         let finalBalanceWTON  = await stakeTON2.finalBalanceWTON()
@@ -226,6 +232,13 @@ describe("TokamakStakeUpgrade4", function () {
         let userStaked  = await stakeTON2.userStaked(testerAddress)
         console.log('userStaked', userStaked)
 
+        let tonBalanceTesterAfter = await tonContract.balanceOf(testerAddress)
+        let tonBalanceContractAfter = await tonContract.balanceOf(stakeTON2.address)
+        console.log('tonBalanceTesterAfter', tonBalanceTesterAfter)
+        console.log('tonBalanceContractAfter', tonBalanceContractAfter)
+
+        expect(tonBalanceTesterAfter).to.be.eq(tonBalanceTesterPrev.add(userStaked.releasedAmount))
+        expect(tonBalanceContractAfter).to.be.eq(tonBalanceContractPrev.sub(userStaked.releasedAmount))
 
     })
 
