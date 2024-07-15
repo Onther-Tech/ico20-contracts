@@ -47,14 +47,14 @@ module.exports = {
       accounts: {
         count: 5,
       },
-      // forking: {
-      //   url: `https://mainnet.infura.io/v3/${process.env.InfuraKey}`,
-      //   blockNumber: 15125232,
-      // },
       forking: {
-        url: `https://sepolia.infura.io/v3/${process.env.InfuraKey}`,
-        // blockNumber: 15125232,
+        url: `https://mainnet.infura.io/v3/${process.env.InfuraKey}`,
+        blockNumber: 20310242,
       },
+      // forking: {
+      //   url: `https://sepolia.infura.io/v3/${process.env.InfuraKey}`,
+      //   // blockNumber: 15125232,
+      // },
     },
     local: {
       chainId: 31337,
