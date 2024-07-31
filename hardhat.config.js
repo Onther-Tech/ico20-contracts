@@ -52,9 +52,17 @@ module.exports = {
       //   blockNumber: 15125232,
       // },
       forking: {
-        url: `https://sepolia.infura.io/v3/${process.env.InfuraKey}`,
-        // blockNumber: 15125232,
+        url: `https://mainnet.infura.io/v3/${process.env.InfuraKey}`,
+        blockNumber: 20424402,
       },
+      // forking: {
+      //   url: `https://sepolia.infura.io/v3/${process.env.InfuraKey}`,
+      //   // blockNumber: 15125232,
+      // },
+      // forking: {
+      //   url: `https://sepolia.infura.io/v3/${process.env.InfuraKey}`,
+      //   blockNumber: 6365718,
+      // },
     },
     local: {
       url: `http://127.0.0.1:8545/`,
@@ -91,9 +99,9 @@ module.exports = {
     },
     mainnet: {
       url: `https://mainnet.infura.io/v3/${process.env.InfuraKey}`,
-      accounts: [`${process.env.ACCOUNT0_PK}`],
-      gasMultiplier: 1.25,
-      gasPrice: 50000000000,
+      accounts: [`${process.env.TONSTARTER_DEPLOYER_PK}`],
+      // gasMultiplier: 1.25,
+      gasPrice: 5000000000,
     },
     goerli: {
       url: `https://goerli.infura.io/v3/${process.env.InfuraKey}`,
@@ -132,8 +140,39 @@ module.exports = {
   // },
   etherscan: {
     apiKey: {
-      goerli: "YW8HPY4UI4GZAG7CCPNYTSNJ7CPQHGWPCB",
-    },
+      mainnet: `${process.env.APIKey}`,
+      goerli: `${process.env.APIKey}`,
+      titan: "verify",
+      titangoerli: "verify",
+      holesky: `${process.env.APIKey}`,
+      sepolia: `${process.env.APIKey}`,
+    } ,
+    customChains: [
+      {
+        network: "titan",
+        chainId: 55004,
+        urls: {
+          apiURL: "https://explorer.titan.tokamak.network//api",
+          browserURL: "https://explorer.titan.tokamak.network/"
+        }
+      },
+      {
+        network: "titangoerli",
+        chainId: 5050,
+        urls: {
+          apiURL: "https://explorer.titan-goerli.tokamak.network/api",
+          browserURL: "https://explorer.titan-goerli.tokamak.network/"
+        }
+      },
+      {
+        network: "holesky",
+        chainId: 17000,
+        urls: {
+          apiURL: "https://api-holesky.etherscan.io/api",
+          browserURL: "https://holesky.etherscan.io/"
+        }
+      }
+    ]
   },
   solidity: {
     version: "0.7.6",
