@@ -47,18 +47,18 @@ module.exports = {
       accounts: {
         count: 5,
       },
-      // forking: {
-      //   url: `https://mainnet.infura.io/v3/${process.env.InfuraKey}`,
-      //   blockNumber: 20310242,
-      // },
+      forking: {
+        url: `https://mainnet.infura.io/v3/${process.env.InfuraKey}`,
+        blockNumber: 20424402,
+      },
       // forking: {
       //   url: `https://sepolia.infura.io/v3/${process.env.InfuraKey}`,
       //   // blockNumber: 15125232,
       // },
-      forking: {
-        url: `https://sepolia.infura.io/v3/${process.env.InfuraKey}`,
-        blockNumber: 6365718,
-      },
+      // forking: {
+      //   url: `https://sepolia.infura.io/v3/${process.env.InfuraKey}`,
+      //   blockNumber: 6365718,
+      // },
     },
     local: {
       chainId: 31337,
@@ -97,9 +97,9 @@ module.exports = {
     },
     mainnet: {
       url: `https://mainnet.infura.io/v3/${process.env.InfuraKey}`,
-      accounts: [`${process.env.ACCOUNT0_PK}`],
-      gasMultiplier: 1.25,
-      gasPrice: 50000000000,
+      accounts: [`${process.env.TONSTARTER_DEPLOYER_PK}`],
+      // gasMultiplier: 1.25,
+      gasPrice: 5000000000,
     },
     goerli: {
       url: `https://goerli.infura.io/v3/${process.env.InfuraKey}`,

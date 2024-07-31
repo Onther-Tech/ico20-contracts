@@ -12,9 +12,18 @@ const ProxyABI = require("../../../artifacts/contracts/stake/LockTOSv2Proxy.sol/
 const LockTOSv2Logic1ABI = require("../../../artifacts/contracts/stake/LockTOSv2Logic1.sol/LockTOSv2Logic1.json").abi
 const LockTOSv2Logic0ABI = require("../../../artifacts/contracts/stake/LockTOSv2Logic0.sol/LockTOSv2Logic0.json").abi
 
+// sepolia
+// const info = {
+//   lockTosProxy: '0x8Fb966Bfb690a8304a5CdE54d9Ed6F7645b26576',
+//   lockTosV2Logic: '0x4E8CAF927a3cBa9B19461dE81CE6932064fa2e6e',
+//   maxTime : ethers.BigNumber.from('94348800'),
+//   staker: '',
+// }
+
+// mainnet
 const info = {
-  lockTosProxy: '0x8Fb966Bfb690a8304a5CdE54d9Ed6F7645b26576',
-  lockTosV2Logic: '0x4E8CAF927a3cBa9B19461dE81CE6932064fa2e6e',
+  lockTosProxy: '0x69b4a202fa4039b42ab23adb725aa7b1e9eebd79',
+  lockTosV2Logic: '',
   maxTime : ethers.BigNumber.from('94348800'),
   staker: '',
 }
