@@ -1,0 +1,347 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "PrivateSaleStorage",
+  "sourceName": "contracts/sale/PrivateSaleStorage.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "aliveImplementation",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "claimEndTime",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "claimStartTime",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "firstClaimTime",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getToken",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTokenOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTokenPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pauseProxy",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "proxyImplementation",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "saleEndTime",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "saleStartTime",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "saleToken",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "saleTokenPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "name": "selectorImplementation",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalGetAmount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalSaleAmount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "usersAmount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "inputamount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "totaloutputamount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "inputTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "monthlyReward",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "firstReward",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "usersClaim",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "claimTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "claimAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "firstClaimAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "firstClaimTime",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "first",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "usersWhite",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "wton",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b50610486806100206000396000f3fe608060405234801561001057600080fd5b506004361061012c5760003560e01c8063814e5c9b116100ad578063b7182b9511610071578063b7182b951461028f578063b911135f14610297578063e985e367146102b4578063ed338ff1146102bc578063ff6dac76146102c45761012c565b8063814e5c9b1461021e57806382d72f7f146102265780638d62d9491461022e578063a6a11bb114610236578063b3f3bf0e1461023e5761012c565b806350d2a276116100f457806350d2a276146101a557806351d28a7e146101cc578063550d01a3146101d45780635cf75bec1461020e57806363a8fd89146102165761012c565b80630757eb4a146101315780631cbaee2d1461016957806321df0da71461017157806340d1d255146101955780634b94f50e1461019d575b600080fd5b6101576004803603602081101561014757600080fd5b50356001600160a01b0316610317565b60408051918252519081900360200190f35b610157610329565b61017961032f565b604080516001600160a01b039092168252519081900360200190f35b61015761033e565b610157610344565b610179600480360360208110156101bb57600080fd5b50356001600160e01b03191661034a565b610157610365565b6101fa600480360360208110156101ea57600080fd5b50356001600160a01b031661036b565b604080519115158252519081900360200190f35b610157610380565b6101fa610386565b61015761038f565b610157610395565b61017961039b565b6101576103aa565b6102646004803603602081101561025457600080fd5b50356001600160a01b03166103b0565b6040805195865260208601949094528484019290925260608401526080830152519081900360a00190f35b6101796103df565b610179600480360360208110156102ad57600080fd5b50356103ee565b610179610409565b610157610418565b6102ea600480360360208110156102da57600080fd5b50356001600160a01b031661041e565b60408051958652602086019490945284840192909252606084015215156080830152519081900360a00190f35b600f6020526000908152604090205481565b60035481565b600b546001600160a01b031681565b60075481565b60095481565b6013602052600090815260409020546001600160a01b031681565b60085481565b60126020526000908152604090205460ff1681565b60015481565b60105460ff1681565b60025481565b60055481565b600c546001600160a01b031681565b60065481565b600d60205260009081526040902080546001820154600283015460038401546004909401549293919290919085565b6000546001600160a01b031681565b6011602052600090815260409020546001600160a01b031681565b600a546001600160a01b031681565b60045481565b600e60205260009081526040902080546001820154600283015460038401546004909401549293919290919060ff168556fea26469706673582212205fed46456eb52752dbc855f63c02bd5f206dac0757fce999d1d2f0cf1e2bb8ac64736f6c63430007060033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061012c5760003560e01c8063814e5c9b116100ad578063b7182b9511610071578063b7182b951461028f578063b911135f14610297578063e985e367146102b4578063ed338ff1146102bc578063ff6dac76146102c45761012c565b8063814e5c9b1461021e57806382d72f7f146102265780638d62d9491461022e578063a6a11bb114610236578063b3f3bf0e1461023e5761012c565b806350d2a276116100f457806350d2a276146101a557806351d28a7e146101cc578063550d01a3146101d45780635cf75bec1461020e57806363a8fd89146102165761012c565b80630757eb4a146101315780631cbaee2d1461016957806321df0da71461017157806340d1d255146101955780634b94f50e1461019d575b600080fd5b6101576004803603602081101561014757600080fd5b50356001600160a01b0316610317565b60408051918252519081900360200190f35b610157610329565b61017961032f565b604080516001600160a01b039092168252519081900360200190f35b61015761033e565b610157610344565b610179600480360360208110156101bb57600080fd5b50356001600160e01b03191661034a565b610157610365565b6101fa600480360360208110156101ea57600080fd5b50356001600160a01b031661036b565b604080519115158252519081900360200190f35b610157610380565b6101fa610386565b61015761038f565b610157610395565b61017961039b565b6101576103aa565b6102646004803603602081101561025457600080fd5b50356001600160a01b03166103b0565b6040805195865260208601949094528484019290925260608401526080830152519081900360a00190f35b6101796103df565b610179600480360360208110156102ad57600080fd5b50356103ee565b610179610409565b610157610418565b6102ea600480360360208110156102da57600080fd5b50356001600160a01b031661041e565b60408051958652602086019490945284840192909252606084015215156080830152519081900360a00190f35b600f6020526000908152604090205481565b60035481565b600b546001600160a01b031681565b60075481565b60095481565b6013602052600090815260409020546001600160a01b031681565b60085481565b60126020526000908152604090205460ff1681565b60015481565b60105460ff1681565b60025481565b60055481565b600c546001600160a01b031681565b60065481565b600d60205260009081526040902080546001820154600283015460038401546004909401549293919290919085565b6000546001600160a01b031681565b6011602052600090815260409020546001600160a01b031681565b600a546001600160a01b031681565b60045481565b600e60205260009081526040902080546001820154600283015460038401546004909401549293919290919060ff168556fea26469706673582212205fed46456eb52752dbc855f63c02bd5f206dac0757fce999d1d2f0cf1e2bb8ac64736f6c63430007060033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

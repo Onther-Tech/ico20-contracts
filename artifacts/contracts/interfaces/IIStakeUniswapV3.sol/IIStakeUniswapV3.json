@@ -1,0 +1,121 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IIStakeUniswapV3",
+  "sourceName": "contracts/interfaces/IIStakeUniswapV3.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getMiningTokenId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "miningAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "nonMiningAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minableAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint160",
+          "name": "secondsInside",
+          "type": "uint160"
+        },
+        {
+          "internalType": "uint256",
+          "name": "secondsInsideDiff256",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "liquidity",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "balanceOfTokenIdRay",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minableAmountRay",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "secondsInside256",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "secondsAbsolute256",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "stake",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "deadline",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint8",
+          "name": "v",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "r",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "s",
+          "type": "bytes32"
+        }
+      ],
+      "name": "stakePermit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

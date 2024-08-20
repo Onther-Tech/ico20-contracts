@@ -10,7 +10,7 @@ scripts/settings.json
 .openzeppelin
 #Hardhat files
 cache
-artifacts
+#artifacts
 
 param/
 build/contracts/
@@ -20,3 +20,8 @@ test/publicSale/lasttest
 
 contracts/sale/dummy
 v3-staker/
+
+artifacts/@openzeppelin
+artifacts/@uniswap
+artifacts/build-info
+artifacts/hardhat

@@ -1,0 +1,511 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "StakeTONStorage",
+  "sourceName": "contracts/stake/StakeTONStorage.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "defiAddr",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "defiStatus",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "depositManager",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "endBlock",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "finalBalanceTON",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "finalBalanceWTON",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "fromTokamak",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getUserStaked",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "claimedBlock",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "claimedAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "releasedBlock",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "releasedAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "releasedTOSAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "released",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "infos",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[3]",
+          "name": "",
+          "type": "uint256[3]"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "migratedL2",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pauseProxy",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "paytoken",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "requestNum",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardClaimedTotal",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "saleStartBlock",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "seigManager",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "stakeRegistry",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "startBlock",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "swapProxy",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "swappedAmountTOS",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "toTokamak",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "toUniswapWTON",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tokamakLayer2",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ton",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalStakedAmount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalStakers",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "userStaked",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "claimedBlock",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "claimedAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "releasedBlock",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "releasedAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "releasedTOSAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "released",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "vault",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdrawFlag",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "wton",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b50610613806100206000396000f3fe608060405234801561001057600080fd5b50600436106101a55760003560e01c806386989038116100ef578063cc48b94711610092578063cc48b94714610362578063dac3fc3f1461036a578063e09974b914610390578063e58e274714610398578063e6a7bc87146103a0578063fbfa77cf146103a8578063fc0c546a146103b0578063fd7fa460146103b8576101a5565b806386989038146102645780638d62d9491461026c57806392ea3b4c146102745780639a88be2f1461027c5780639d84ca35146102ea578063a1f5f50e146102f2578063acc3a939146102fa578063b2d4d6a31461035a576101a5565b8063567e98f911610157578063567e98f91461021057806363a8fd891461021857806368304835146102345780636c7ac9d81461023c5780636e7cf534146102445780636ec4be901461024c5780636fb7f55814610254578063722853261461025c576101a5565b806305871b78146101aa578063083c6323146101c45780630ac8e0f3146101cc5780630ea3d9c9146101d457806320027275146101dc57806343b0934a146101e457806348cd4cb114610208575b600080fd5b6101b26103c0565b60408051918252519081900360200190f35b6101b26103c6565b6101b26103cc565b6101b26103d2565b6101b26103d8565b6101ec6103de565b604080516001600160a01b039092168252519081900360200190f35b6101b26103ed565b6101b26103f3565b6102206103f9565b604080519115158252519081900360200190f35b6101ec610402565b6101ec610411565b610220610420565b6101ec610429565b6101ec610438565b6101b2610447565b6101b261044d565b6101ec610453565b6101ec610462565b610284610471565b604080516001600160a01b0380891682528716602082015290810185606080838360005b838110156102c05781810151838201526020016102a8565b50505050905001848152602001838152602001828152602001965050505050505060405180910390f35b6101ec6104c7565b6102206104db565b6103206004803603602081101561031057600080fd5b50356001600160a01b03166104eb565b604080519788526020880196909652868601949094526060860192909252608085015260a0840152151560c0830152519081900360e00190f35b6101b261052b565b6101ec610531565b6103206004803603602081101561038057600080fd5b50356001600160a01b0316610540565b6101b2610589565b6101b261058f565b6101b2610595565b6101ec61059b565b6101ec6105aa565b6101b26105b9565b60155481565b60065481565b60145481565b60165481565b60045481565b6002546001600160a01b031681565b60055481565b60085481565b600c5460ff1681565b6001546001600160a01b031681565b6010546001600160a01b031681565b601b5460ff1681565b6011546001600160a01b031681565b600f546001600160a01b031681565b60195481565b600a5481565b600e546001600160a01b031681565b6012546001600160a01b031681565b60008061047c6105bf565b5050600254600354604080516060810182526004548152600554602082015260065491810191909152600754600854600a546001600160a01b03958616979590941695509193909290565b600c5461010090046001600160a01b031681565b600c54600160a81b900460ff1681565b6009602052600090815260409020805460018201546002830154600384015460048501546005860154600690960154949593949293919290919060ff1687565b60075481565b600d546001600160a01b031681565b6001600160a01b03166000908152600960205260409020805460018201546002830154600384015460048501546005860154600690960154949693959294919390929160ff1690565b601a5481565b60175481565b60185481565b6003546001600160a01b031681565b6000546001600160a01b031681565b60135481565b6040518060600160405280600390602082028036833750919291505056fea264697066735822122053a591f64b1e78f22708ce7d3240f4d02141fa48e26fda7f0421a3aaeb267c5964736f6c63430007060033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106101a55760003560e01c806386989038116100ef578063cc48b94711610092578063cc48b94714610362578063dac3fc3f1461036a578063e09974b914610390578063e58e274714610398578063e6a7bc87146103a0578063fbfa77cf146103a8578063fc0c546a146103b0578063fd7fa460146103b8576101a5565b806386989038146102645780638d62d9491461026c57806392ea3b4c146102745780639a88be2f1461027c5780639d84ca35146102ea578063a1f5f50e146102f2578063acc3a939146102fa578063b2d4d6a31461035a576101a5565b8063567e98f911610157578063567e98f91461021057806363a8fd891461021857806368304835146102345780636c7ac9d81461023c5780636e7cf534146102445780636ec4be901461024c5780636fb7f55814610254578063722853261461025c576101a5565b806305871b78146101aa578063083c6323146101c45780630ac8e0f3146101cc5780630ea3d9c9146101d457806320027275146101dc57806343b0934a146101e457806348cd4cb114610208575b600080fd5b6101b26103c0565b60408051918252519081900360200190f35b6101b26103c6565b6101b26103cc565b6101b26103d2565b6101b26103d8565b6101ec6103de565b604080516001600160a01b039092168252519081900360200190f35b6101b26103ed565b6101b26103f3565b6102206103f9565b604080519115158252519081900360200190f35b6101ec610402565b6101ec610411565b610220610420565b6101ec610429565b6101ec610438565b6101b2610447565b6101b261044d565b6101ec610453565b6101ec610462565b610284610471565b604080516001600160a01b0380891682528716602082015290810185606080838360005b838110156102c05781810151838201526020016102a8565b50505050905001848152602001838152602001828152602001965050505050505060405180910390f35b6101ec6104c7565b6102206104db565b6103206004803603602081101561031057600080fd5b50356001600160a01b03166104eb565b604080519788526020880196909652868601949094526060860192909252608085015260a0840152151560c0830152519081900360e00190f35b6101b261052b565b6101ec610531565b6103206004803603602081101561038057600080fd5b50356001600160a01b0316610540565b6101b2610589565b6101b261058f565b6101b2610595565b6101ec61059b565b6101ec6105aa565b6101b26105b9565b60155481565b60065481565b60145481565b60165481565b60045481565b6002546001600160a01b031681565b60055481565b60085481565b600c5460ff1681565b6001546001600160a01b031681565b6010546001600160a01b031681565b601b5460ff1681565b6011546001600160a01b031681565b600f546001600160a01b031681565b60195481565b600a5481565b600e546001600160a01b031681565b6012546001600160a01b031681565b60008061047c6105bf565b5050600254600354604080516060810182526004548152600554602082015260065491810191909152600754600854600a546001600160a01b03958616979590941695509193909290565b600c5461010090046001600160a01b031681565b600c54600160a81b900460ff1681565b6009602052600090815260409020805460018201546002830154600384015460048501546005860154600690960154949593949293919290919060ff1687565b60075481565b600d546001600160a01b031681565b6001600160a01b03166000908152600960205260409020805460018201546002830154600384015460048501546005860154600690960154949693959294919390929160ff1690565b601a5481565b60175481565b60185481565b6003546001600160a01b031681565b6000546001600160a01b031681565b60135481565b6040518060600160405280600390602082028036833750919291505056fea264697066735822122053a591f64b1e78f22708ce7d3240f4d02141fa48e26fda7f0421a3aaeb267c5964736f6c63430007060033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
