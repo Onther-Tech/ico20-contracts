@@ -95,10 +95,11 @@ async function getData(contractAddress) {
         // console.log(e);
         if(events[l].event == "Staked" ){
             // console.log("txCount", txCount,e.event, e.blockNumber, e.transactionHash, e.args.to, e.args.amount);
+            // console.log("transactionHash",events[l].transactionHash)
             txCount++;
             let userStaked = await contract.userStaked(events[l].args.to);
             let canRewardAmount = await contract.canRewardAmount(events[l].args.to, block.number);
-            add(events[l].args.to.toLowerCase(), events[l].args.amount, userStaked.released, canRewardAmount);
+            add(events[l].transactionHash, events[l].args.to.toLowerCase(), events[l].args.amount, userStaked.released, canRewardAmount);
         }
       }
       console.log('==== block ', i);
@@ -114,7 +115,7 @@ async function getData(contractAddress) {
 
       if(stakeInfos[h].withdraw == false || stakeInfos[h].canReward.toString() != '0') {
         sumAmount = sumAmount.add(stakeInfos[h].amount)
-        console.log( h,'    ', stakeInfos[h].account, '    ',stakeInfos[h].amount.toString(),'    ', stakeInfos[h].withdraw,'    ',  stakeInfos[h].canReward.toString());
+        console.log( h,' ', stakeInfos[h].transactionHash, '   ', stakeInfos[h].account, '    ',stakeInfos[h].amount.toString(),'    ', stakeInfos[h].withdraw,'    ',  stakeInfos[h].canReward.toString());
       }
       // console.log( h,'    ', stakeInfos[h].account, '    ',stakeInfos[h].amount.toString(),'    ', stakeInfos[h].withdraw,'    ',  stakeInfos[h].canReward.toString());
     }
@@ -124,14 +125,15 @@ async function getData(contractAddress) {
   };
 
 
-  function add(user, amount, withdraw, canReward) {
+  function add(transactionHash, user, amount, withdraw, canReward) {
 
     if(!stakers.includes(user)) {
        let data = {
           account: user,
           amount: amount,
           withdraw: withdraw,
-          canReward: canReward
+          canReward: canReward,
+          transactionHash: transactionHash
         }
         stakeInfos.push(data);
      } else {
@@ -140,7 +142,7 @@ async function getData(contractAddress) {
             stakeInfos[i].amount = stakeInfos[i].amount.add(amount)
             stakeInfos[i].withdraw = withdraw;
             stakeInfos[i].canReward = canReward;
-
+            stakeInfos[i].transactionHash = transactionHash;
           }
        }
      }
@@ -152,7 +154,7 @@ main()
   .catch((error) => {
 
     for(i=0; i< stakeInfos.length; i++){
-      console.log( i,'    ', stakeInfos[i].account, '    ',stakeInfos[i].amount.toString(),'    ', stakeInfos[i].withdraw,'    ',  stakeInfos[i].canReward.toString());
+      console.log( i,' ', stakeInfos[i].transactionHash,'  ', stakeInfos[i].account, '    ',stakeInfos[i].amount.toString(),'    ', stakeInfos[i].withdraw,'    ',  stakeInfos[i].canReward.toString());
     }
 
     console.error(error);
