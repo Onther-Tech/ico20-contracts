@@ -87,19 +87,6 @@ const stakerAddress4 = "0x7ee93e58f1784f23956de508ed0ec33ec8be9701"
 const testerAddress5 = null
 const stakerAddress5 = "0xe12ea99b2a6603ec19e3138a92d8f0101a588031";
 
-// 5번째 톤스테이크 의 경우, 레이어주소가 이전 레이어주소로 설정되어 있어서, withdraw 가 안된다.
-// 현재 24.12 톤을 0xe12ea99b2a6603ec19e3138a92d8f0101a588031 사용자가 가져가지 않음.
-// 클래임은 잘 된다.
-//
-// 3년전 종료된 컨트랙이라서 업그레이드를 하지 않았음. 오너권한도 가지고 있지 않음.
-// Stake1Proxy 컨트랙을 통해 Stake1Proxy 오너가 로직 수행해서 오너를 지정할 수 있게 해야 하고, 함수도 추가해야함.
-// 가스비도 많이 들어감.
-// https://etherscan.io/address/0x8e539e29D80fd4cB3167409A82787f3B80bf9113#writeProxyContract#F24
-//
-// 사용자 민원이 있을때, 톤을 주는게 더 나을것 같음.
-//const stakeContract5 = "0x21Db1777Dd95749A849d9e244136E72bd93082Ea";
-// 14      0xe12ea99b2a6603ec19e3138a92d8f0101a588031      24120000000000000000      false      3093070872029554319
-
 async function withdraw(tonContract, userAddress, stakeTON_Address) {
     console.log('-- withdraw :' , userAddress)
     const contract = await ethers.getContractAt(StakeTON.abi, stakeTON_Address);
@@ -279,7 +266,7 @@ describe("Delete Admin & TOS Bunner", function () {
         console.log("func_withdraw",func_withdraw);
     });
 
-    it("UPgrade stakeTON_5", async function () {
+    it("Upgrade stakeTON_5", async function () {
         const abi = [
             {
                 "inputs": [
