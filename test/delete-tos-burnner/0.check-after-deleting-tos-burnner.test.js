@@ -373,7 +373,7 @@ describe("Delete Admin & TOS Bunner", function () {
         await (await stakeTON_5_2.connect(admin).setSelectorImplementations2([func_withdraw], changed.imp1)).wait()
 
         expect(await stakeTON_5_2.getSelectorImplementation2(func_setTokamakLayer2)).to.be.eq(changed.imp0)
-        expect(await stakeTON_5_2.getSelectorImplementation2(func_withdraw)).to.be.eq(changed.imp1)
+        expect(await stakeTON_5_2.getSelectorImplementation2('0x3ccfd60b')).to.be.eq(changed.imp1)
 
         //====================
         await (await stakeTON_5_2_updaged.connect(admin).setTokamakLayer2(changedLayer)).wait()
