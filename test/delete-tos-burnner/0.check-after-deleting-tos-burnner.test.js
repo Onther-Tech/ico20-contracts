@@ -23,6 +23,8 @@ let StakeTONProxy2 = require('../../abis/StakeTONProxy2.json');
 let StakeTONProxy = require('../../abis/StakeTONProxy.json');
 let StakeTON = require('../../abis/StakeTON.json');
 let StakeTONUpgrade2 = require('../../abis/StakeTONUpgrade2.json');
+let Stake1Proxy = require('../../abis/Stake1Proxy.json');
+let Stake1Logic = require('../../abis/Stake1Logic.json');
 
 let adminAddress ="0x15280a52E79FD4aB35F4B9Acbb376DCD72b44Fd1"
 let tosAdminAddress ="0x12A936026F072d4e97047696A9d11F97Eae47d21"
@@ -36,6 +38,17 @@ let deployedInfo = {
     stakeTON_4: "0x9F97b34161686d60ADB955ed63A2FC0b2eC0a2a9",
     stakeTON_5: "0x21Db1777Dd95749A849d9e244136E72bd93082Ea",
     wtontosPoolAddress: "0x1c0ce9aaa0c12f53df3b4d8d77b82d6ad343b4e4",
+    stake1Proxy: "0x8e539e29D80fd4cB3167409A82787f3B80bf9113"
+}
+
+let changed = {
+    proxy: "0xa16412aCF22b70DDCCeBcAFA75E773bb1879B341",
+    imp0: "0x07bC0A6036d8448DA9cB06Da859f35086533188C",
+    imp1: "0xE75D8392c2EEd2425AFC7fcFba88D340b493ccC2",
+    imp2: "0x523eD202d3591b70cC4ab19d10BDe036EAe3361F",
+    imp3: "0x369A0F8eAb20992130170A1A37A1B688052f6278",
+    imp4: "0xE6387C2ad36a8a9D96b5DAE14F86dcb15e196592",
+    imp5: "0xea537302701Da28695b819f05D036b101Ec73825"
 }
 
 let contractInfos = {
@@ -219,8 +232,9 @@ describe("Delete Admin & TOS Bunner", function () {
     let stakeTON1, stakeTONProxy, stakeTON1Proxy, stakeTON1Proxy2,  stakeTON2, stakeTON3, stakeTON4, stakeTON5;
     let provider;
     let tester, logic, admin, tosAdmin, stake5Admin
-    let func_withdraw
+    let func_withdraw, func_setTokamakLayer2
     let tonContract
+    let stake1Proxy
 
     before(async function () {
         accounts = await ethers.getSigners();
@@ -259,29 +273,136 @@ describe("Delete Admin & TOS Bunner", function () {
         tosContract = await ethers.getContractAt(TOSToken.abi, contractInfos.TOS);
 
 
-
-
-        // let _func1 = Web3EthAbi.encodeFunctionSignature("withdraw()") ;
-        // expect(await contract.getSelectorImplementation2(_func1)).to.be.equal(stakeTONUpgrade3.address);
-        // for (let i = 0; i < stakeAddresses.length; i++) {
-        //   if (stakeAddresses[i] != null) {
-        //     let contract = await StakeTONProxy2.at(stakeAddresses[i], { from: defaultSender });
-        //     await contract.setImplementation2(stakeTONUpgrade3.address, 1, true, { from: defaultSender });
-        //     expect(await contract.implementation2(1)).to.be.equal(stakeTONUpgrade3.address);
-        //     await contract.setSelectorImplementations2([_func1], stakeTONUpgrade3.address, { from: defaultSender });
-        //     expect(await contract.getSelectorImplementation2(_func1)).to.be.equal(stakeTONUpgrade3.address);
-        //   }
-        // }
-
+        func_setTokamakLayer2 = Web3EthAbi.encodeFunctionSignature("setTokamakLayer2()") ;
+        console.log("func_setTokamakLayer2",func_setTokamakLayer2);
+        func_withdraw = Web3EthAbi.encodeFunctionSignature("withdraw()") ;
+        console.log("func_withdraw",func_withdraw);
     });
+
+    it("UPgrade stakeTON_5", async function () {
+        const abi = [
+            {
+                "inputs": [
+                  {
+                    "internalType": "address",
+                    "name": "target",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "bytes32",
+                    "name": "role",
+                    "type": "bytes32"
+                  },
+                  {
+                    "internalType": "address",
+                    "name": "account",
+                    "type": "address"
+                  }
+                ],
+                "name": "grantRole",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+              },
+              {
+                "inputs": [
+                  {
+                    "internalType": "address",
+                    "name": "_stakeProxy",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "address",
+                    "name": "_implementation",
+                    "type": "address"
+                  }
+                ],
+                "name": "upgradeStakeTo",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+              },
+        ]
+        const abiUpdated = [
+              {
+                "inputs": [
+                  {
+                    "internalType": "address",
+                    "name": "_layer2",
+                    "type": "address"
+                  }
+                ],
+                "name": "setTokamakLayer2",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+              },
+              {
+                "inputs": [],
+                "name": "tokamakLayer2",
+                "outputs": [
+                  {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                  }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+              },
+        ]
+        stake1Proxy = await ethers.getContractAt(Stake1Proxy.abi, deployedInfo.stake1Proxy, provider);
+        stake1ProxyLogic = await ethers.getContractAt(abi, deployedInfo.stake1Proxy, provider);
+
+        stakeTON_5 = await ethers.getContractAt(StakeTONProxy.abi, deployedInfo.stakeTON_5, provider);
+        stakeTON_5_2 = await ethers.getContractAt(StakeTONProxy2.abi, deployedInfo.stakeTON_5, provider);
+        stakeTON_5_2_updaged = await ethers.getContractAt(abiUpdated, deployedInfo.stakeTON_5, provider);
+
+        const ADMIN_ROLE = keccak256("ADMIN");
+        // console.log('ADMIN_ROLE', ADMIN_ROLE)
+
+
+        //====================
+        expect(await stake1Proxy.isAdmin(admin.address)).to.be.eq(true)
+        let old_implementaion = await stakeTON_5.implementation()
+        // console.log('old_implementaion', old_implementaion)
+
+        await (await stake1ProxyLogic.connect(admin).grantRole(
+            deployedInfo.stakeTON_5,
+            '0xdf8b4c520ffe197c5343c6f5aec59570151ef9a492f2c624fd45ddde6135ec42',
+            admin.address)).wait()
+        expect(await stakeTON_5.isAdmin(admin.address)).to.be.eq(true)
+
+        await (await stake1ProxyLogic.connect(admin).upgradeStakeTo(deployedInfo.stakeTON_5, changed.proxy)).wait()
+        expect(await stakeTON_5.implementation()).to.be.eq(changed.proxy)
+        //====================
+
+        await (await stakeTON_5_2.connect(admin).setImplementation2(changed.imp0, 0, true)).wait()
+        expect(await stakeTON_5_2.implementation2(0)).to.be.eq(changed.imp0)
+
+        await (await stakeTON_5_2.connect(admin).setImplementation2(changed.imp1, 1, true)).wait()
+        expect(await stakeTON_5_2.implementation2(1)).to.be.eq(changed.imp1)
+
+        await (await stakeTON_5_2.connect(admin).setSelectorImplementations2([func_withdraw], changed.imp1)).wait()
+
+        expect(await stakeTON_5_2.getSelectorImplementation2(func_setTokamakLayer2)).to.be.eq(changed.imp0)
+        expect(await stakeTON_5_2.getSelectorImplementation2(func_withdraw)).to.be.eq(changed.imp1)
+
+        //====================
+        await (await stakeTON_5_2_updaged.connect(admin).setTokamakLayer2(changedLayer)).wait()
+        expect(await stakeTON_5_2.tokamakLayer2()).to.be.eq(changedLayer)
+
+        let layer = await stakeTON_5_2.tokamakLayer2()
+        console.log('layer', layer)
+    })
 
     it("Remove Admin of stakeTON", async function () {
         stakeTON_1 = await ethers.getContractAt(StakeTONProxy.abi, deployedInfo.stakeTON_1, provider);
         stakeTON_2 = await ethers.getContractAt(StakeTONProxy.abi, deployedInfo.stakeTON_2, provider);
         stakeTON_3 = await ethers.getContractAt(StakeTONProxy.abi, deployedInfo.stakeTON_3, provider);
         stakeTON_4 = await ethers.getContractAt(StakeTONProxy.abi, deployedInfo.stakeTON_4, provider);
-        stakeTON_5 = await ethers.getContractAt(StakeTONProxy.abi, deployedInfo.stakeTON_5, provider);
-        stakeTON_5_2 = await ethers.getContractAt(StakeTONProxy2.abi, deployedInfo.stakeTON_5, provider);
+
+        // stakeTON_5_2 = await ethers.getContractAt(StakeTONProxy2.abi, deployedInfo.stakeTON_5, provider);
 
         expect(await stakeTON_1.isAdmin(admin.address)).to.be.eq(true)
         await (await stakeTON_1.connect(admin).removeAdmin(admin.address)).wait()
@@ -299,13 +420,9 @@ describe("Delete Admin & TOS Bunner", function () {
         await (await stakeTON_4.connect(admin).removeAdmin(admin.address)).wait()
         expect(await stakeTON_4.isAdmin(admin.address)).to.be.eq(false)
 
-        // stakeTON_5 는 레이어주소를 바꿔주어야 성공함. 그런데 오너권한이 컨트랙 자체에게 있음. 프록시, 로직 변경 필요함.
-        const contract = await ethers.getContractAt(StakeTON.abi, deployedInfo.stakeTON_5);
-        await (await contract.connect(stake5Admin).setTokamakLayer2(changedLayer)).wait()
-
-        expect(await stakeTON_5.isAdmin(stake5Admin.address)).to.be.eq(true)
-        await (await stakeTON_5.connect(stake5Admin).removeAdmin(stake5Admin.address)).wait()
-        expect(await stakeTON_5.isAdmin(stake5Admin.address)).to.be.eq(false)
+        expect(await stakeTON_5.isAdmin(admin.address)).to.be.eq(true)
+        await (await stakeTON_5.connect(admin).removeAdmin(admin.address)).wait()
+        expect(await stakeTON_5.isAdmin(admin.address)).to.be.eq(false)
 
     });
 
@@ -333,7 +450,7 @@ describe("Delete Admin & TOS Bunner", function () {
         await (await tosContract.connect(tosAdmin).removeAdmin(tosAdmin.address)).wait()
         expect(await tosContract.isAdmin(tosAdmin.address)).to.be.eq(false)
     })
-    /*
+
     it("StakeTON1 : withdraw", async function () {
         const stakers = [
             '0x128eb26ac40bc62f1d7eec9bcb0b2a72b5bc73ab',
@@ -475,7 +592,6 @@ describe("Delete Admin & TOS Bunner", function () {
         ]
         await claims(tosContract, claimers, deployedInfo.stakeTON_4)
     });
-    */
 
     it("StakeTON5 : withdraw", async function () {
         const stakers = [
