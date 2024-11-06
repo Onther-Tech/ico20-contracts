@@ -113,7 +113,7 @@ async function withdraw(tonContract, userAddress, stakeTON_Address) {
 }
 
 async function withdraws(tonContract, stakers, stakeTON_Address) {
-    console.log('-- withdraws :' , stakers.length)
+    // console.log('-- withdraws :' , stakers.length)
     const contract = await ethers.getContractAt(StakeTON.abi, stakeTON_Address);
 
     let i = 0
@@ -131,7 +131,7 @@ async function withdraws(tonContract, stakers, stakeTON_Address) {
         let tonBalanceBefore = await tonContract.balanceOf(userAddress)
 
         if (userStaked.released == false) {
-            console.log('-- withdraw exec --- ', i )
+            // console.log('-- withdraw exec --- ', i )
             await (await contract.connect(user).withdraw()).wait()
             let tonBalanceAfter = await tonContract.balanceOf(userAddress)
             userStaked  = await contract.userStaked(userAddress)
@@ -176,7 +176,7 @@ async function claim(tosContract, userAddress, stakeTON_Address) {
 }
 
 async function claims(tosContract, stakers, stakeTON_Address) {
-    console.log('-- claims :' , stakers.length)
+    // console.log('-- claims :' , stakers.length)
     const contract = await ethers.getContractAt(StakeTON.abi, stakeTON_Address);
     let block = await ethers.provider.getBlock('latest')
     let i = 0
@@ -195,7 +195,7 @@ async function claims(tosContract, stakers, stakeTON_Address) {
         let canRewardAmount = await contract.canRewardAmount(userAddress, block.number)
 
         if (canRewardAmount.gt(ethers.constants.Zero)) {
-            console.log('-- claim exec -- ', i , userAddress)
+            // console.log('-- claim exec -- ', i )
             await (await contract.connect(user).claim()).wait()
             let tosBalanceAfter = await tosContract.balanceOf(userAddress)
             userStaked  = await contract.userStaked(userAddress)
@@ -204,10 +204,6 @@ async function claims(tosContract, stakers, stakeTON_Address) {
             expect(tosBalanceAfter).to.be.gt(tosBalanceBefore)
             expect(canRewardAmount).to.be.eq(ethers.constants.Zero)
             expect(userStaked.claimedBlock).to.be.gt(ethers.constants.Zero)
-        } else {
-            console.log(' *** -- claim no exec ', i, userAddress)
-            console.log(' userStaked', userStaked)
-
         }
 
     }
