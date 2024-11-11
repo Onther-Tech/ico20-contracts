@@ -163,7 +163,7 @@ async function withdrawals(tosContract, stakers, contractAddress) {
         let j = 0
         for (j = 0; j < len ; ++j) {
             let tokenId = userStakedTokenIds[j]
-            console.log('-- withdraw exec -- ', j , userAddress, tokenId)
+            console.log('-- withdraw exec -- ', j , tokenId)
             expect((await nonfungiblePositionManager.ownerOf(tokenId)).toLowerCase()).to.be.eq(contractAddress.toLowerCase())
             await (await contract.connect(user).withdraw(userStakedTokenIds[j])).wait()
             expect((await nonfungiblePositionManager.ownerOf(tokenId)).toLowerCase()).to.be.eq(userAddress.toLowerCase())
